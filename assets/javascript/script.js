@@ -26,8 +26,8 @@ $('#myCarousel').carousel({
   var oddsApiKey = "d38373eaef05ac04f5bc305caee2257c";
   $.ajax({
     type: "GET",
-    url: "api.the-odds-api.com/v3/sports/?apiKey=" + oddsApiKey,
-  }).then(function(repsonse){
+    url: "http://api.the-odds-api.com/v3/sports/?apiKey=" + oddsApiKey,
+  }).then(function(response){
     console.log(response);
   })
 // }
