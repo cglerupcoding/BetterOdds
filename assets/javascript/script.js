@@ -1,8 +1,8 @@
 // Carousel
-$('#myCarousel').carousel({
-    interval: 2000,
-    wrap: true
-      })
+// $('#myCarousel').carousel({
+//     interval: 2000,
+//     wrap: true
+//       })
 
 
 // My sports feed api
@@ -22,15 +22,22 @@ $('#myCarousel').carousel({
 //  }
 // });
 
+
+//apikey = d38373eaef05ac04f5bc305caee2257c
 // function sportsOdds(){
-  var oddsApiKey = "d38373eaef05ac04f5bc305caee2257c";
-  $.ajax({
-    type: "GET",
-    url: "http://api.the-odds-api.com/v3/sports/?apiKey=" + oddsApiKey,
-  }).then(function(response){
-    console.log(response);
-  })
+  var apiData =
+  "https://api.the-odds-api.com/v3/odds?apiKey=d38373eaef05ac04f5bc305caee2257c&region=uk&sport=icehockey_nhl";
+$.ajax({
+  url: apiData,
+  method: "GET"
+}).then(function(response) {
+  console.log(response);
+  console.log(response.data["7"].details);
+});
 // }
 
 // sportsOdds();
+
+
+
 
