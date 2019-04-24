@@ -44,7 +44,7 @@ $.ajax({
   //console.log(response);
   oddsData = response.data;
   console.log(oddsData);
-// 796e849552861a2de2a4e1617d9b1a6c4de96e9b
+
 });
 }
 
@@ -53,7 +53,7 @@ sportsOdds();
 
 
 
-// Firebase
+
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyBRVn-JUBU5itr9VYoxm2QIp_p7LIgaxco",
@@ -64,3 +64,43 @@ var config = {
   messagingSenderId: "29456380019"
 };
 firebase.initializeApp(config);
+
+var dataSet = [{
+  "name": "Boston Bruins",
+  "odds": "1.6",
+  "score": "1"
+},
+{
+  "name": "Toronto Maple Leafs",
+  "odds": "0.4",
+  "score": "2"
+}
+];
+
+// var item = {
+    // name = SHIT FROM THE API hRERE;
+    // odds = SHIT FROM THE API hRERE;
+    // score = SHIT FROM THE API hRERE;
+//}
+
+//dataSet = $.parseJSON(dataSet);
+// function populateOddsTable(){
+//   for(var i = 0; i < dataSet.length; i++){
+//     console.log(dataSet[i]);
+    
+//   }
+// }
+
+$(function populateOddsTable() {
+  $.each(dataSet, function(i, item) {
+    var $tr = $('<tr>').append(
+      $('<td>').text(item.name),
+      $('<td>').text(item.odds),
+      $('<td>').text(item.score)
+    );
+    console.log($tr.wrap('<p>').html());
+    $("#oddsTable > tbody").append($tr);
+  });
+});
+
+populateOddsTable();
