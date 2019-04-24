@@ -77,8 +77,6 @@ function showSignupForm(event){
 
 function hideSignupForm(event){
   event.preventDefault();
-  //clear out the form
-  //$("#signUpForm").find("input[type=text], textarea").val("");
   //then hide it
   $("#modalSignupForm").hide();
 }
