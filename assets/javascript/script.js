@@ -55,7 +55,8 @@ firebase.initializeApp(config);
 //events handlers
 
 //login button click handler
-$("#signupBtn").on("click", function(){
+$("#signupBtn").on("click", function(event){
+  event.preventDefault();
   //TODO:  validate thoroughly
 
   //TODO:  get the form data assuming it's all good
@@ -63,6 +64,19 @@ $("#signupBtn").on("click", function(){
   //TODO:  Store it in firebase
 });
 
-$("#cancelBtn").on("click", function(){
-  console.log("You cancelled");
-});
+
+function showSignupForm(event){
+  event.preventDefault();
+  $("#modalSignupForm").show();
+}
+
+function hideSignupForm(event){
+  event.preventDefault();
+  //clear out the form
+  //$("#signUpForm").find("input[type=text], textarea").val("");
+  //then hide it
+  $("#modalSignupForm").hide();
+}
+
+$("#showSignUpModal").on("click", showSignupForm);
+$("#signUpCancelBtn").on("click", hideSignupForm);
