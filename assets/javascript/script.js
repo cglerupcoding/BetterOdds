@@ -36,24 +36,13 @@ $.ajax({
   url: apiData,
   method: "GET"
 }).then(function(response) {
-
   console.log(response);
-
-
-
   //console.log(response);
   oddsData = response.data;
-  console.log(oddsData);
-
+  console.log(oddsData.0.data);
 });
 }
-
 sportsOdds();
-
-
-
-
-
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyBRVn-JUBU5itr9VYoxm2QIp_p7LIgaxco",
@@ -77,19 +66,14 @@ var dataSet = [{
 }
 ];
 
-// var item = {
+// 
+// var data = {
     // name = SHIT FROM THE API hRERE;
     // odds = SHIT FROM THE API hRERE;
     // score = SHIT FROM THE API hRERE;
 //}
 
 //dataSet = $.parseJSON(dataSet);
-// function populateOddsTable(){
-//   for(var i = 0; i < dataSet.length; i++){
-//     console.log(dataSet[i]);
-    
-//   }
-// }
 
 $(function populateOddsTable() {
   $.each(dataSet, function(i, item) {
@@ -104,3 +88,7 @@ $(function populateOddsTable() {
 });
 
 populateOddsTable();
+
+// $(function calculateBet() {
+//   result = userWager * item.odds;
+// })
