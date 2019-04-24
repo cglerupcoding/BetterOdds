@@ -38,10 +38,7 @@ $.ajax({
 });
 }
 
-sportsOdds();
-
-
-
+sportsOdds();  //this would be better as an onload event for the window. (BVH)
 
 // Firebase
 // Initialize Firebase
@@ -54,3 +51,18 @@ var config = {
   messagingSenderId: "29456380019"
 };
 firebase.initializeApp(config);
+
+//events handlers
+
+//login button click handler
+$("#signupBtn").on("click", function(){
+  //TODO:  validate thoroughly
+
+  //TODO:  get the form data assuming it's all good
+
+  //TODO:  Store it in firebase
+});
+
+$("#cancelBtn").on("click", function(){
+  console.log("You cancelled");
+});
