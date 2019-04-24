@@ -24,19 +24,21 @@
 
 
 //apikey = d38373eaef05ac04f5bc305caee2257c
-// function sportsOdds(){
+var oddsData = [];
+function sportsOdds(){
   var apiData =
   "https://api.the-odds-api.com/v3/odds?apiKey=d38373eaef05ac04f5bc305caee2257c&region=uk&sport=icehockey_nhl";
 $.ajax({
   url: apiData,
   method: "GET"
 }).then(function(response) {
-  console.log(response);
-  console.log(response.data["7"].details);
+  //console.log(response);
+  oddsData = response.data;
+  console.log(oddsData);
 });
-// }
+}
 
-// sportsOdds();
+sportsOdds();
 
 
 
