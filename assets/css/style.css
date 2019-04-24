@@ -118,3 +118,7 @@ hr {
     width: 100%;
   }
 }
+
+td {
+  background-color: antiquewhite;
+}
