@@ -51,17 +51,22 @@ var config = {
   messagingSenderId: "29456380019"
 };
 firebase.initializeApp(config);
+var dataRef = firebase.database();
 
 //events handlers
 
 //login button click handler
-$("#signupBtn").on("click", function(event){
+$("#signUpSubmitBtn").on("click", function(event){
   event.preventDefault();
   //TODO:  validate thoroughly
+    //do the passwords match?
+    //is the email field a valid address?
+    //does the user already exist?
 
-  //TODO:  get the form data assuming it's all good
-
-  //TODO:  Store it in firebase
+  var newUser = {};
+  newUser.email = $("#enterEmail").val.trim();
+  newUser.password = $("#enterPassword").val.trim();
+  dataRef("/users").push(newUser);
 });
 
 
