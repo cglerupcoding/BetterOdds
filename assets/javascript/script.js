@@ -24,12 +24,9 @@
 
 
 //apikey = d38373eaef05ac04f5bc305caee2257c
-// <<<<<<< HEAD
-// function sportsOdds(){
-var team1Odds;
-var team2Odds;
 
-// =======
+
+
 var oddsData = [];
 function sportsOdds(){
 // >>>>>>> 796e849552861a2de2a4e1617d9b1a6c4de96e9b
@@ -41,12 +38,8 @@ $.ajax({
 }).then(function(response) {
 
   console.log(response);
-  console.log(response.data[0].sites[3].odds.h2h[0]);
-  console.log(response.data[0].sites[3].odds.h2h[1]);
-  team1Odds = response.data[0].sites[3].odds.h2h[0];
-  team2Odds = response.data[0].sites[3].odds.h2h[1];
 
-  return team1Odds, team2Odds;
+
 
   //console.log(response);
   oddsData = response.data;
@@ -56,7 +49,3 @@ $.ajax({
 }
 
 sportsOdds();
-
-
-
-
