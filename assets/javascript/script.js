@@ -49,3 +49,18 @@ $.ajax({
 }
 
 sportsOdds();
+
+
+
+
+// Firebase
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBRVn-JUBU5itr9VYoxm2QIp_p7LIgaxco",
+  authDomain: "betterodds-c8723.firebaseapp.com",
+  databaseURL: "https://betterodds-c8723.firebaseio.com",
+  projectId: "betterodds-c8723",
+  storageBucket: "betterodds-c8723.appspot.com",
+  messagingSenderId: "29456380019"
+};
+firebase.initializeApp(config);
