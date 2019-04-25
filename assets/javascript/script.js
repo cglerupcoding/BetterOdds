@@ -114,10 +114,12 @@ function hideSignupForm(event) {
 }
 
 function showLogin(event) {
+  $("#myCarousel").hide();
   $("#modalSignInForm").show();
 }
 
 function hideLogin(event) {
+  $("#myCarousel").show();
   $("#modalSignInForm").hide();
 
 }
