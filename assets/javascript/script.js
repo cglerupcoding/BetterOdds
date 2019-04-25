@@ -35,11 +35,13 @@ function isValidEmailAddress(emailAddress) {
 //events handlers
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    // User is signed in.  Hide the login / sign up buttons.  An over-acheiver might be tempted to put a logout button in here somewhere.
+    // User is signed in.  Hide the login / sign up buttons.
     $("#loginOrSignUp").hide();
+    $("#logoutDiv").show();
   } else {
     // No user is signed in.  Show the login / signup buttons.
     $("#loginOrSignUp").show();
+    $("#logoutDiv").hide();
   }
 });
 //sign up button click handler
@@ -136,6 +138,14 @@ function doLogin(event) {
   }
 }
 
+function doLogoff(event){
+  firebase.auth().signOut().then(function() {
+    //i don't really need to do anything
+    console.log("Logging off...  Come back soon!");
+  }).catch(function(error) {
+    console.log("Logoff didn't work!  " + error.message);
+  });
+}
 $("#signinFailMessage").hide();
 $("#signupSuccessMessage").hide();
 $("#signupFailMessage").hide();
@@ -144,7 +154,7 @@ $("#showSignInModal").on("click", showLogin);
 $("#signInCancelButton").on("click", hideLogin);
 $("#signUpCancelBtn").on("click", hideSignupForm);
 $("#signInSubmitButton").on("click", doLogin);
-
+$("#logoutButton").on("click", doLogoff);
 
 var dataSet = [{
   "name": "Boston Bruins",
