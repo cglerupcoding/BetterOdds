@@ -37,10 +37,9 @@ function isValidEmailAddress(emailAddress) {
 //login button click handler
 $("#signUpSubmitBtn").on("click", function (event) {
   event.preventDefault();
-  //TODO:  validate thoroughly
   //do the passwords match?
   //is the email field a valid address?
-  //does the user already exist?
+  //does the user already exist?  (I think firebase auth handles that one.)
   var valid = true;
   var userEmail = $("#enterEmail").val().trim();
   var userPassword = $("#enterPassword").val().trim();
@@ -86,13 +85,17 @@ $("#signUpSubmitBtn").on("click", function (event) {
 
 function showSignupForm(event) {
   event.preventDefault();
+  //hide the carousel because for some reason it's drawing on top of the modal (how did you do that?  i didn't think that possible.)
+  $("#myCarousel").hide();
   $("#modalSignupForm").show();
 }
 
 function hideSignupForm(event) {
   event.preventDefault();
-  //then hide it
   $("#modalSignupForm").hide();
+  //turn the carousel back on
+  $("#myCarousel").show();
+  
 }
 
 $("#signupSuccessMessage").hide();
