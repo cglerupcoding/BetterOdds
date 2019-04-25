@@ -42,7 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#loginOrSignUp").show();
   }
 });
-//login button click handler
+//sign up button click handler
 $("#signUpSubmitBtn").on("click", function (event) {
   event.preventDefault();
   //disable the submit button so the user can't double submit
@@ -112,10 +112,11 @@ function hideSignupForm(event) {
 }
 
 function showLogin(event) {
-
+  $("#modalSignInForm").show();
 }
 
 function hideLogin(event) {
+  $("#modalSignInForm").hide();
 
 }
 
@@ -139,7 +140,11 @@ $("#signinFailMessage").hide();
 $("#signupSuccessMessage").hide();
 $("#signupFailMessage").hide();
 $("#showSignUpModal").on("click", showSignupForm);
+$("#showSignInModal").on("click", showLogin);
+$("#signInCancelButton").on("click", hideLogin);
 $("#signUpCancelBtn").on("click", hideSignupForm);
+$("#signInSubmitButton").on("click", doLogin);
+
 
 var dataSet = [{
   "name": "Boston Bruins",
