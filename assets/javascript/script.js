@@ -33,7 +33,15 @@ function isValidEmailAddress(emailAddress) {
 }
 
 //events handlers
-
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.  Hide the login / sign up buttons.  An over-acheiver might be tempted to put a logout button in here somewhere.
+    $("#loginOrSignUp").hide();
+  } else {
+    // No user is signed in.  Show the login / signup buttons.
+    $("#loginOrSignUp").show();
+  }
+});
 //login button click handler
 $("#signUpSubmitBtn").on("click", function (event) {
   event.preventDefault();
@@ -74,7 +82,7 @@ $("#signUpSubmitBtn").on("click", function (event) {
 
   //firebase can still reject so it too triggers valid = false and sets the message.
   //nothing left but to show the appropriate message
-  if(valid){
+  if (valid) {
     $("#btnSubmit").attr("disabled", true);
     $("#signupSuccessMessage").show();
     $("#signupFailMessage").hide();
@@ -100,9 +108,34 @@ function hideSignupForm(event) {
   $("#modalSignupForm").hide();
   //turn the carousel back on
   $("#myCarousel").show();
-  
+
 }
 
+function showLogin(event) {
+
+}
+
+function hideLogin(event) {
+
+}
+
+function doLogin(event) {
+  var userEmail = $("#loginEmail").val().trim();
+  var userPassword = $("#loginPassword").val().trim();
+  //simple validation
+  if (userEmail.length < 1 || userPassword.length < 1) {
+
+  } else {
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).catch(function (error) {
+      // Handle Errors here.
+      var errorMessage = error.message;
+      $("#signinFailMessage").text(errorMessage);
+      $("#signinFailMessage").show();
+    });
+  }
+}
+
+$("#signinFailMessage").hide();
 $("#signupSuccessMessage").hide();
 $("#signupFailMessage").hide();
 $("#showSignUpModal").on("click", showSignupForm);
