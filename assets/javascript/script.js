@@ -37,6 +37,8 @@ function isValidEmailAddress(emailAddress) {
 //login button click handler
 $("#signUpSubmitBtn").on("click", function (event) {
   event.preventDefault();
+  //disable the submit button so the user can't double submit
+  $("#signUpSubmitBtn").attr("disabled", true);
   //do the passwords match?
   //is the email field a valid address?
   //does the user already exist?  (I think firebase auth handles that one.)
@@ -73,9 +75,12 @@ $("#signUpSubmitBtn").on("click", function (event) {
   //firebase can still reject so it too triggers valid = false and sets the message.
   //nothing left but to show the appropriate message
   if(valid){
+    $("#btnSubmit").attr("disabled", true);
     $("#signupSuccessMessage").show();
     $("#signupFailMessage").hide();
+    $("#signUpCancelBtn").text("Close");
   } else {
+    $("#signUpSubmitBtn").removeAttr("disabled");
     $("#signupSuccessMessage").hide();
     $("#signupFailMessage").show();
   }
