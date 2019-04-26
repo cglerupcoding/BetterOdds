@@ -1,4 +1,5 @@
 var oddsData = [];
+var userBet = [];
 function sportsOdds() {
   var apiData =
     "https://api.the-odds-api.com/v3/odds?apiKey=5f39012d85433423e103ebbc50766d6f&region=uk&sport=icehockey_nhl";
@@ -12,6 +13,7 @@ function sportsOdds() {
         var $tr = $('<tr>').append(
           $('<td>').text(oddsData.data[i].teams),
           $('<td>').text(oddsData.data[i].sites[2].odds.h2h),
+          $('<button>', {id : "btn_" + i}).text("Place Bet")
           // $('<td>').text(item.score)
         );
         console.log($tr.wrap('<p>').html());
@@ -153,6 +155,14 @@ function doLogin(event) {
   }
 }
 
+function addBet(event) {
+  var gameOdds = oddsData.data[i].sites[2].odds.h2h;
+  var userBet;
+  $("#btn_" + i).on("click", function (event) {
+    userBet = gameOdds * userInput;
+  })
+}
+
 function doLogoff(event){
   firebase.auth().signOut().then(function() {
     //i don't really need to do anything
@@ -170,38 +180,3 @@ $("#signInCancelButton").on("click", hideLogin);
 $("#signUpCancelBtn").on("click", hideSignupForm);
 $("#signInSubmitButton").on("click", doLogin);
 $("#logoutButton").on("click", doLogoff);
-
-var dataSet = [{
-  "name": "Boston Bruins",
-  "odds": "1.6",
-  "score": "1"
-},
-{
-  "name": "Toronto Maple Leafs",
-  "odds": "0.4",
-  "score": "2"
-}
-];
-
-// 
-// var data = {
-// name = SHIT FROM THE API hRERE;
-// odds = SHIT FROM THE API hRERE;
-// score = SHIT FROM THE API hRERE;
-//}
-
-//dataSet = $.parseJSON(dataSet);
-
-// function populateOddsTable() {
-//   $.each(dataSet, function (i, item) {
-//     var $tr = $('<tr>').append(
-//       $('<td>').text(item.name),
-//       $('<td>').text(item.odds),
-//       $('<td>').text(item.score)
-//     );
-//     console.log($tr.wrap('<p>').html());
-//     $("#oddsTable > tbody").append($tr);
-//   });
-
-// }
-// populateOddsTable();
