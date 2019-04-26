@@ -1,32 +1,30 @@
 var oddsData = [];
 function sportsOdds() {
   var apiData =
-    "https://api.the-odds-api.com/v3/odds?apiKey=d38373eaef05ac04f5bc305caee2257c&region=uk&sport=icehockey_nhl";
+    "https://api.the-odds-api.com/v3/odds?apiKey=5f39012d85433423e103ebbc50766d6f&region=uk&sport=icehockey_nhl";
   $.ajax({
     url: apiData,
     method: "GET"
   }).then(function (response) {
     console.log(response);
     oddsData = response;
-
-    
       $.each(oddsData.data, function (i, item) {
         var $tr = $('<tr>').append(
           $('<td>').text(oddsData.data[i].teams),
           $('<td>').text(oddsData.data[i].sites[2].odds.h2h),
-          $('<td>').text(item.score)
+          // $('<td>').text(item.score)
         );
         console.log($tr.wrap('<p>').html());
         $("#oddsTable > tbody").append($tr);
     });
-
-    return oddsData;
   });
 }
 
-
-sportsOdds();  //this would be better as an onload event for the window. (BVH)
-
+$(document).ready(function() {
+  sportsOdds();
+});
+  //this would be better as an onload event for the window. (BVH)
+  //this has been fixed (CLC)
 console.log(oddsData);
 
 // Initialize Firebase
