@@ -7,12 +7,27 @@ function sportsOdds() {
     method: "GET"
   }).then(function (response) {
     console.log(response);
-    //console.log(response);
-    oddsData = response.data;
+    oddsData = response;
+
+    
+      $.each(oddsData.data, function (i, item) {
+        var $tr = $('<tr>').append(
+          $('<td>').text(oddsData.data[i].teams),
+          $('<td>').text(oddsData.data[i].sites[2].odds.h2h),
+          $('<td>').text(item.score)
+        );
+        console.log($tr.wrap('<p>').html());
+        $("#oddsTable > tbody").append($tr);
+    });
+
+    return oddsData;
   });
 }
 
+
 sportsOdds();  //this would be better as an onload event for the window. (BVH)
+
+console.log(oddsData);
 
 // Initialize Firebase
 var config = {
@@ -179,16 +194,16 @@ var dataSet = [{
 
 //dataSet = $.parseJSON(dataSet);
 
-function populateOddsTable() {
-  $.each(dataSet, function (i, item) {
-    var $tr = $('<tr>').append(
-      $('<td>').text(item.name),
-      $('<td>').text(item.odds),
-      $('<td>').text(item.score)
-    );
-    console.log($tr.wrap('<p>').html());
-    $("#oddsTable > tbody").append($tr);
-  });
+// function populateOddsTable() {
+//   $.each(dataSet, function (i, item) {
+//     var $tr = $('<tr>').append(
+//       $('<td>').text(item.name),
+//       $('<td>').text(item.odds),
+//       $('<td>').text(item.score)
+//     );
+//     console.log($tr.wrap('<p>').html());
+//     $("#oddsTable > tbody").append($tr);
+//   });
 
-}
-populateOddsTable();
+// }
+// populateOddsTable();
