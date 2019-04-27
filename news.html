@@ -59,15 +59,28 @@
         </div>
       </nav>
 
-<div class="container">
-    <div class="col-md-4" id="newsOne">    </div>
-      <div class="col-md-4" id="newsTwo">
-        <div class="col-md-4" id="newsThree">
-        </div>
+
+ <!-- This row will handle all of the retrieved articles -->
+ <div class="row">
+  <div class="col-sm-8" id="newsContent">
+    <br>
+
+    <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+    <div class="card" id=newsCard>
+
+      <!-- card Heading for the retrieved articles box -->
+      <div class="card-header">
+        <strong>
+          <i class="fa fa-table" id="newsTitle"></i> Top Articles</strong>
       </div>
 
+      <!-- This main card will hold each of the resulting articles -->
+      <div class="card-body" id="article-section">
+      </div>
+    </div>
+  </div>
 </div>
-                                
+              
 <!-- Site Javascript Link -->
   <!-- we put this at the bottom so we know that all the DOM elements have been rendered.-->
   <script src="assets/javascript/news.js"></script>

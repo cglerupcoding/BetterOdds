@@ -127,5 +127,19 @@ hr {
 }
 
 td {
+
   background-color: white;
 }
+
+
+.card-header {
+ 
+  color: #DEAF3D;
+  
+}
+
+#newsCard {
+  background-color: black;
+  
+}
+
