@@ -2,7 +2,7 @@ var oddsData = [];
 var userBet = [];
 function sportsOdds() {
   var apiData =
-    "https://api.the-odds-api.com/v3/odds?apiKey=5f39012d85433423e103ebbc50766d6f&region=uk&sport=icehockey_nhl";
+    "https://api.the-odds-api.com/v3/odds?apiKey=485e90528f7ad448b6f70597a5cbff75&region=uk&sport=icehockey_nhl";
   $.ajax({
     url: apiData,
     method: "GET"
