@@ -10,17 +10,30 @@ function sportsOdds() {
     console.log(response);
     oddsData = response;
       $.each(oddsData.data, function (i, item) {
+        //console.log("Button " );
         var $tr = $('<tr>').append(
           $('<td>').text(oddsData.data[i].teams),
           $('<td>').text(oddsData.data[i].sites[2].odds.h2h),
-          $('<button>', {id : "btn_" + i}).text("Place Bet")
+          $('<button>', {id : "btn_" + i}).text("Place Bet"),
           // $('<td>').text(item.score)
         );
         console.log($tr.wrap('<p>').html());
         $("#oddsTable > tbody").append($tr);
+        // $('tbody').on('click', '#btn_', function (event) {
+        //   // userBet = gameOdds * userInput;
+        //   console.log("Button " );
+        // })
+        console.log("setting up button click event handler " );
+        // $('<button>', {id : "btn_" + i}).on('click', '#btn_', function (event) {
+        //   // userBet = gameOdds * userInput;
+        //   console.log("Button " );
+        // })
+
     });
   });
 }
+
+$('#btn_').on('click', addBet);
 
 $(document).ready(function() {
   sportsOdds();
@@ -156,12 +169,14 @@ function doLogin(event) {
 }
 
 function addBet(event) {
-  var gameOdds = oddsData.data[i].sites[2].odds.h2h;
-  var userBet;
-  $("#btn_" + i).on("click", function (event) {
-    userBet = gameOdds * userInput;
-  })
-}
+  console.log("addBet " );
+  // var gameOdds = oddsData.data[i].sites[2].odds.h2h;
+  // var userBet;
+  // $('tbody').on('click', '#btn_', function (event) {
+    // userBet = gameOdds * userInput;
+    // console.log("Button");
+  // })
+ }
 
 function doLogoff(event){
   firebase.auth().signOut().then(function() {
