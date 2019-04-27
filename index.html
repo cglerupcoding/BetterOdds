@@ -175,7 +175,19 @@
 
     </tbody>
   </table>
-
+  <!--Creates the popup body-->
+  <div class="modal" id="oddsDialog">
+    <!--Creates the popup content-->
+    <form class="modal-content" id="oddsForm">
+        <div class="container">
+            <h2>Place your bet!</h2>
+             <input type="text" placeholder="Enter Bet" id="team1Win" name="team1bet" required>
+             <input type="text" placeholder="Enter Bet" id="team2Win" name="team2bet" required>
+             <input type="text" placeholder="Enter Bet" id="overtime" name="overtimebet" required>
+            <button class="close">Close</button>    
+        </div>    
+    </form>
+  </div>
     <!-- Site Javascript Link -->
     <!-- we put this at the bottom so we know that all the DOM elements have been rendered.-->
     <script src="assets/javascript/script.js"></script>
