@@ -10,17 +10,55 @@ function sportsOdds() {
     console.log(response);
     oddsData = response;
       $.each(oddsData.data, function (i, item) {
+        //console.log("Button " );
         var $tr = $('<tr>').append(
           $('<td>').text(oddsData.data[i].teams),
           $('<td>').text(oddsData.data[i].sites[2].odds.h2h),
-          $('<button>', {id : "btn_" + i}).text("Place Bet")
-          // $('<td>').text(item.score)
+          $('<button>', {id : "btn_" + i}).text("Place Bet"),
+        // $('<td>').text(item.score)
         );
         console.log($tr.wrap('<p>').html());
         $("#oddsTable > tbody").append($tr);
+        // $('tbody').on('click', '#btn_', function (event) {
+        //   // userBet = gameOdds * userInput;
+        //   console.log("Button " );
+        // })
+        console.log("setting up button click event handler " );
+        //$("btn_" + i).click(function (event) {
+        //  // userBet = gameOdds * userInput;
+        //  console.log("Button " );
+        //});
+        $(document).on('click', '#btn_'+i, function(){
+          console.log(this.value);
+          var btnid = $(this).attr("id");
+          var btnIndex = String(btnid).substring(4, 5);
+          var oddsH2H = oddsData.data[btnIndex].sites[2].odds.h2h;
+          //var userInput;
+          showOddsDialog(oddsH2H);
+      });
     });
   });
 }
+
+function showOddsDialog(odds) {
+  //ewDialog = $('<div class="popup" title="place-odds">');
+  //alert(odds);
+
+  const oddsTokens = String(odds).split(',');
+  
+  $('#team1Win').attr('placeholder', 'Team 1 Odds=' + oddsTokens[0]);
+  $('#team2Win').attr('placeholder', 'Team 2 Odds=' + oddsTokens[1]);
+  if (odds.length > 2)
+  {
+    $('#overtime').attr('placeholder', 'Overtime Odds=' + oddsTokens[2]);
+
+  }
+ 
+  $("#oddsDialog").show();
+
+}
+
+$('#btn_').on('click', addBet);
 
 $(document).ready(function() {
   sportsOdds();
@@ -156,12 +194,14 @@ function doLogin(event) {
 }
 
 function addBet(event) {
-  var gameOdds = oddsData.data[i].sites[2].odds.h2h;
-  var userBet;
-  $("#btn_" + i).on("click", function (event) {
-    userBet = gameOdds * userInput;
-  })
-}
+  console.log("addBet " );
+  // var gameOdds = oddsData.data[i].sites[2].odds.h2h;
+  // var userBet;
+  // $('tbody').on('click', '#btn_', function (event) {
+    // userBet = gameOdds * userInput;
+    // console.log("Button");
+  // })
+ }
 
 function doLogoff(event){
   firebase.auth().signOut().then(function() {
